@@ -2,7 +2,10 @@
 title: "lab_exercise#1_Olivo"
 author: "Olivo, Mel Adry"
 date: "2024-02-07"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -33,7 +36,7 @@ session1 <- bow(notebooklink1,
            user_agent = "For Educational Purpose")
 
 scrapeNodes <- function(selector){
-scrape(session) %>%
+scrape(session1) %>%
   html_nodes(selector) %>%
   html_text(trim = TRUE)
 }
@@ -143,7 +146,7 @@ session4 <- bow(pencillink1,
            user_agent = "For Educational Purpose")
 
 scrapeNodes <- function(selector){
-scrape(session) %>%
+scrape(session4) %>%
   html_nodes(selector) %>%
   html_text(trim = TRUE)
 }
@@ -177,7 +180,7 @@ session5 <- bow(pencillink2,
            user_agent = "For Educational Purpose")
 
 scrapeNodes <- function(selector){
-scrape(session) %>%
+scrape(session5) %>%
   html_nodes(selector) %>%
   html_text(trim = TRUE)
 }
@@ -212,7 +215,7 @@ session6 <- bow(pencillink3,
            user_agent = "For Educational Purpose")
 
 scrapeNodes <- function(selector){
-scrape(session) %>%
+scrape(session6) %>%
   html_nodes(selector) %>%
   html_text(trim = TRUE)
 }
@@ -248,7 +251,7 @@ MERGING TWO PRODUCTS
 
 ```{r}
 scraped_products <- rbind(notebook_products, pencil_products)
-View(scraped_products)
+#View(scraped_products)
 ```
 
 10 PRODUCTS
@@ -365,7 +368,7 @@ scrapedCategory <- "Notebook"
                           date = scrapedDate3,
                          ratings = scrapedprodRating3))
       
-View(product1)
+#View(product1)
 ```
 
 product2
@@ -480,7 +483,7 @@ scrapedCategory <- "Notebook"
                           date = scrapedDate3,
                          ratings = scrapedprodRating3))
       
-View(product2)
+#View(product2)
 ```
 
 product3
@@ -595,7 +598,7 @@ scrapedCategory <- "Notebook"
                           date = scrapedDate3,
                          ratings = scrapedprodRating3))
       
-View(product3)
+#View(product3)
 ```
 
 
@@ -711,7 +714,7 @@ scrapedCategory <- "Notebook"
                           date = scrapedDate3,
                          ratings = scrapedprodRating3))
       
-View(product4)
+#View(product4)
 ```
 
 product5
@@ -826,7 +829,7 @@ scrapedCategory <- "Notebook"
                           date = scrapedDate3,
                          ratings = scrapedprodRating3))
       
-View(product5)
+#View(product5)
 ```
 
 product6
@@ -941,7 +944,7 @@ scrapedCategory <- "Pencil"
                           date = scrapedDate3,
                          ratings = scrapedprodRating3))
       
-View(product6)
+#View(product6)
 ```
 
 product7
@@ -1056,7 +1059,7 @@ scrapedCategory <- "Pencil"
                           date = scrapedDate3,
                          ratings = scrapedprodRating3))
       
-View(product7)
+#View(product7)
 ```
 
 product8
@@ -1171,7 +1174,7 @@ scrapedCategory <- "Pencil"
                           date = scrapedDate3,
                          ratings = scrapedprodRating3))
       
-View(product8)
+#View(product8)
 ```
 
 product9
@@ -1286,7 +1289,7 @@ scrapedCategory <- "Pencil"
                           date = scrapedDate3,
                          ratings = scrapedprodRating3))
       
-View(product9)
+#View(product9)
 ```
 
 
@@ -1402,15 +1405,18 @@ scrapedCategory <- "Pencil"
                           date = scrapedDate3,
                          ratings = scrapedprodRating3))
       
-View(product10)
+#View(product10)
 ```
 
 ```{r}
 
 all_reviews <- rbind(product1, product2, product3, product4, product5, product6, product7, product8, product9, product10)
-View(all_reviews)
+#View(all_reviews)
 
 
 #install.packages("usethis")
-library(usethis)
+#library(usethis)
+
+#git config --global user.email "meladry.olivo@students.isatu.edu.ph"
+#git config --global user.name "Mel Adry Olivo"
 ```
