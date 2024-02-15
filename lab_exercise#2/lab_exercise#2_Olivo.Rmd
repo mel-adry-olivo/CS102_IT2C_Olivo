@@ -1,0 +1,707 @@
+---
+title: "lab_exercise#2_Olivo"
+author: "Olivo, Mel Adry"
+date: "2024-02-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+allProds = data.frame();
+
+```
+
+SCRAPING FOR 50
+
+product1 - STAEDTLER 121-2 BK5D Noris School Graphite Pencils - HB Degree (Pack of 5), Black
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product1 <- data.frame()
+
+for (page in 1:5) {
+  link1 <- paste0("https://www.amazon.com.au/HB-Pack-Staedtler-Pencil-Blister/product-reviews/B001P5V47W/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session1 <- bow(link1, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session1) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "STAEDTLER 121-2 BK5D Noris School Graphite Pencils - HB Degree (Pack of 5), Black"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product1 <- rbind(product1, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product1)
+
+```
+
+
+product2 - STAEDTLER NORIS SCHOOL PENCILS HB [PACK OF 50) LOOSE
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product2 <- data.frame()
+
+for (page in 1:5) {
+  link2 <- paste0("https://www.amazon.com.au/STAEDTLER-Noris-School-Pencils-Loose/product-reviews/B00Z705PAI/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session2 <- bow(link2, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session2) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "STAEDTLER NORIS SCHOOL PENCILS HB [PACK OF 50) LOOSE"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product2 <- rbind(product2, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product2)
+
+```
+
+
+product3 - BIC Evolution Original Pencils - Pack of 10 - All-Purpose, Extra- Resistant Erasable Pencils for Easy Drawing and Writing, black
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product3 <- data.frame()
+
+for (page in 1:5) {
+  link3 <- paste0("https://www.amazon.com.au/BIC-Evolution-Original-Graphite-Pencils/product-reviews/B003V8BIFE/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session3 <- bow(link3, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session3) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "STAEDTLER NORIS SCHOOL PENCILS HB [PACK OF 50) LOOSE"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product3 <- rbind(product3, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product3)
+
+```
+
+
+product4 - BIC Cristal Original Ballpoint , Comfortable Biro Pens, Medium Point (1.0mm), Assorted Colours, Pack of 10
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product4 <- data.frame()
+
+for (page in 1:5) {
+  link4 <- paste0("https://www.amazon.com.au/Cristal-Original-Ballpoint-Medium-Point/product-reviews/B005BRK8S6/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session4 <- bow(link4, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session4) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "BIC Cristal Original Ballpoint , Comfortable Biro Pens, Medium Point (1.0mm), Assorted Colours, Pack of 10"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product4 <- rbind(product4, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product4)
+
+```
+
+
+
+product5 - BIC Evolution Graphite Pencils - Box of 12 - HB Lead with Colourful Striped Design - Wood-Free and Splinter-Proof, Yellow,Green,Pink,Red,Black
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product5 <- data.frame()
+
+for (page in 1:5) {
+  link5 <- paste0("https://www.amazon.com.au/BIC-Evolution-Colourful-Graphite-Pencil/product-reviews/B015AHQ98E/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session5 <- bow(link5, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session5) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "BIC Evolution Graphite Pencils - Box of 12 - HB Lead with Colourful Striped Design - Wood-Free and Splinter-Proof, Yellow,Green,Pink,Red,Black"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product5 <- rbind(product5, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product5)
+
+```
+
+
+product6 - Faber-Castell TK-Fine-9760 Mechanical Pencils Wallet of 3 - 0.35, 0.5, 0.7mm, Green
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product6 <- data.frame()
+
+for (page in 3:7) {
+  link6 <- paste0("https://www.amazon.com.au/Faber-Castell-TK-Fine-9713-Mechanical-Pencils-Wallet/product-reviews/B000WF36E0/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session6 <- bow(link6, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session6) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "Faber-Castell TK-Fine-9760 Mechanical Pencils Wallet of 3 - 0.35, 0.5, 0.7mm, Green"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product6 <- rbind(product6, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product6)
+
+```
+
+
+product7 - STAEDTLER 120-0 Noris Graphite Pencils - 2B (Box of 12), Black
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product7 <- data.frame()
+
+for (page in 3:7) {
+  link7 <- paste0("https://www.amazon.com.au/Staedtler-120-0-Noris-Pencils-Black/product-reviews/B0018LQMSO/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session7 <- bow(link7, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session7) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "STAEDTLER 120-0 Noris Graphite Pencils - 2B (Box of 12), Black"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product7 <- rbind(product7, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product7)
+
+```
+
+
+product8 - STAEDTLER 100B G6 Mars Lumograph Pencils, Black, Pack of 6
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product8 <- data.frame()
+
+for (page in 3:7) {
+  link8 <- paste0("https://www.amazon.com.au/STAEDTLER-100B-G6-Lumograph-Pencils/product-reviews/B018W0FOGY/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session8 <- bow(link8, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session8) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "STAEDTLER 100B G6 Mars Lumograph Pencils, Black, Pack of 6"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product8 <- rbind(product8, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product8)
+```
+
+product9 - Winsor & Newton 490008 Studio Collection Graphite Pencils, Set of 12, Professional Quality for Artists, for Sketching, Writing and Drawing
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product9 <- data.frame()
+
+for (page in 3:7) {
+  link9 <- paste0("https://www.amazon.com.au/Winsor-Newton-884955064856-Precision-Sketching/product-reviews/B07JKBJXG4/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session9 <- bow(link9, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session9) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Winsor & Newton 490008 Studio Collection Graphite Pencils, Set of 12, Professional Quality for Artists, for Sketching, Writing and Drawing"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product9 <- rbind(product9, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product9)
+```
+
+product10 - Bic Kids Evolution ECOlutions Colouring Pencils, Assorted Colours, Eco-Friendly, 70 g,12 Count (Pack of 1)
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product10 <- data.frame()
+
+for (page in 5:10) {
+  link10 <- paste0("https://www.amazon.com.au/Bic-Evolution-ECOlutions-Colouring-Eco-Friendly/product-reviews/B00008D0UG/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session10 <- bow(link10, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session10) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Bic Kids Evolution ECOlutions Colouring Pencils, Assorted Colours, Eco-Friendly, 70 g,12 Count (Pack of 1)"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product10 <- rbind(product10, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product10)
+```
+
+product11 - Mechanical pencil Pentel PG1013-E GraphGear1000, line width 0.3 mm, rubber (Z2-1N), 1 piece
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product11 <- data.frame()
+
+for (page in 3:7) {
+  link11 <- paste0("https://www.amazon.com.au/Pentel-Graphgear-1000-Mechanical-Pencil/product-reviews/B000GAU2RU/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session11 <- bow(link11, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session11) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Mechanical pencil Pentel PG1013-E GraphGear1000, line width 0.3 mm, rubber (Z2-1N), 1 piece"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product11 <- rbind(product11, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product11)
+```
+
+product12 - Derwent Graphic Soft Graphite Drawing Pencils, Ideal For Illustrating & Shading, Set Of 12, Professional Quality, 34215
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product12 <- data.frame()
+
+for (page in 3:7) {
+  link12 <- paste0("https://www.amazon.com.au/Derwent-34215-Graphic-Graphite-Professional/product-reviews/B000J6BAV8/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session12 <- bow(link12, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session12) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Derwent Graphic Soft Graphite Drawing Pencils, Ideal For Illustrating & Shading, Set Of 12, Professional Quality, 34215"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product12 <- rbind(product12, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product12)
+```
+
+product13 - Faber-Castell - Castell 9000 Art Set Pencil (Pack of 6), Green
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product13 <- data.frame()
+
+for (page in 3:7) {
+  link13 <- paste0("https://www.amazon.com.au/Faber-Castell-Castell-9000-Pencil-Pack/product-reviews/B00COMESOQ/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session13 <- bow(link13, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session13) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Faber-Castell - Castell 9000 Art Set Pencil (Pack of 6), Green"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product13 <- rbind(product13, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product13)
+```
+
+product14 - Bic - Evolution Triangle - Triangular Pencils with Integrated Eraser - HB - Box of 12
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product14 <- data.frame()
+
+for (page in 3:7) {
+  link14 <- paste0("https://www.amazon.com.au/Evolution-Triangular-Pencils-Integrated-Eraser/product-reviews/B07R3WXGLH/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session14 <- bow(link14, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session14) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Bic - Evolution Triangle - Triangular Pencils with Integrated Eraser - HB - Box of 12"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product14 <- rbind(product14, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product14)
+```
+
+product15 - STAEDTLER 7755ABK25D Mars Micro Mechanical Pencil, 0.5mm (Blistercard of 1 + 12 HB Lead Refills)
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product15 <- data.frame()
+
+for (page in 1:5) {
+  link15 <- paste0("https://www.amazon.com.au/Staedtler-Micro-7755ABK25D-Mechanical-Pencil/product-reviews/B003JZ0BHK/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session15 <- bow(link15, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session15) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "STAEDTLER 7755ABK25D Mars Micro Mechanical Pencil, 0.5mm (Blistercard of 1 + 12 HB Lead Refills)"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product15 <- rbind(product15, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+View(product15)
+```
+
+```{r}
+#
+#allProd <- rbind(allProd, product1, product2, product3, product4, product5, product6, product7, product8, product9, product10,
+#                product11, product12, product13, product14, product15)
+#
+```
