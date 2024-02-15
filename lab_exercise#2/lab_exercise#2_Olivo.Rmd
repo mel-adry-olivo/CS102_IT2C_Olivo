@@ -2,17 +2,13 @@
 title: "lab_exercise#2_Olivo"
 author: "Olivo, Mel Adry"
 date: "2024-02-15"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r}
-
-allProds = data.frame();
-
 ```
 
 SCRAPING FOR 50
@@ -59,7 +55,7 @@ for (page in 1:5) {
   #Sys.sleep(3)
 }
 
-View(product1)
+#View(product1)
 
 ```
 
@@ -106,7 +102,7 @@ for (page in 1:5) {
   #Sys.sleep(3)
 }
 
-View(product2)
+#View(product2)
 
 ```
 
@@ -132,7 +128,7 @@ for (page in 1:5) {
       html_text(trim = TRUE)
   }
 
-  productName <- "STAEDTLER NORIS SCHOOL PENCILS HB [PACK OF 50) LOOSE"
+  productName <- "BIC Evolution Original Pencils - Pack of 10 - All-Purpose, Extra- Resistant Erasable Pencils for Easy Drawing and Writing, black"
   scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
   scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
   scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
@@ -153,7 +149,7 @@ for (page in 1:5) {
   #Sys.sleep(3)
 }
 
-View(product3)
+#View(product3)
 
 ```
 
@@ -200,7 +196,7 @@ for (page in 1:5) {
   #Sys.sleep(3)
 }
 
-View(product4)
+#View(product4)
 
 ```
 
@@ -248,7 +244,7 @@ for (page in 1:5) {
   Sys.sleep(3)
 }
 
-View(product5)
+#View(product5)
 
 ```
 
@@ -295,7 +291,7 @@ for (page in 3:7) {
   #Sys.sleep(3)
 }
 
-View(product6)
+#View(product6)
 
 ```
 
@@ -342,7 +338,7 @@ for (page in 3:7) {
   #Sys.sleep(3)
 }
 
-View(product7)
+#View(product7)
 
 ```
 
@@ -388,7 +384,7 @@ for (page in 3:7) {
   #Sys.sleep(3)
 }
 
-View(product8)
+#View(product8)
 ```
 
 product9 - Winsor & Newton 490008 Studio Collection Graphite Pencils, Set of 12, Professional Quality for Artists, for Sketching, Writing and Drawing
@@ -432,7 +428,7 @@ for (page in 3:7) {
   #Sys.sleep(3)
 }
 
-View(product9)
+#View(product9)
 ```
 
 product10 - Bic Kids Evolution ECOlutions Colouring Pencils, Assorted Colours, Eco-Friendly, 70 g,12 Count (Pack of 1)
@@ -445,7 +441,7 @@ library(selectr)
 
 product10 <- data.frame()
 
-for (page in 5:10) {
+for (page in 6:10) {
   link10 <- paste0("https://www.amazon.com.au/Bic-Evolution-ECOlutions-Colouring-Eco-Friendly/product-reviews/B00008D0UG/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
   session10 <- bow(link10, user_agent = "Educational Purpose")
 
@@ -476,7 +472,7 @@ for (page in 5:10) {
   #Sys.sleep(3)
 }
 
-View(product10)
+#View(product10)
 ```
 
 product11 - Mechanical pencil Pentel PG1013-E GraphGear1000, line width 0.3 mm, rubber (Z2-1N), 1 piece
@@ -520,7 +516,7 @@ for (page in 3:7) {
   #Sys.sleep(3)
 }
 
-View(product11)
+#View(product11)
 ```
 
 product12 - Derwent Graphic Soft Graphite Drawing Pencils, Ideal For Illustrating & Shading, Set Of 12, Professional Quality, 34215
@@ -564,7 +560,7 @@ for (page in 3:7) {
   #Sys.sleep(3)
 }
 
-View(product12)
+#View(product12)
 ```
 
 product13 - Faber-Castell - Castell 9000 Art Set Pencil (Pack of 6), Green
@@ -608,7 +604,7 @@ for (page in 3:7) {
   #Sys.sleep(3)
 }
 
-View(product13)
+#View(product13)
 ```
 
 product14 - Bic - Evolution Triangle - Triangular Pencils with Integrated Eraser - HB - Box of 12
@@ -652,7 +648,7 @@ for (page in 3:7) {
   #Sys.sleep(3)
 }
 
-View(product14)
+#View(product14)
 ```
 
 product15 - STAEDTLER 7755ABK25D Mars Micro Mechanical Pencil, 0.5mm (Blistercard of 1 + 12 HB Lead Refills)
@@ -696,12 +692,520 @@ for (page in 1:5) {
   #Sys.sleep(3)
 }
 
-View(product15)
+#View(product15)
 ```
 
+product16 - Faber-Castell Goldfaber Artists' Graphite 4B Pencil
 ```{r}
-#
-#allProd <- rbind(allProd, product1, product2, product3, product4, product5, product6, product7, product8, product9, product10,
-#                product11, product12, product13, product14, product15)
-#
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product16 <- data.frame()
+
+for (page in 1:5) {
+  link16 <- paste0("https://www.amazon.com.au/Faber-Castell-Goldfaber-Artists-Graphite-Pencil/product-reviews/B003IGGH32/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session16 <- bow(link16, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session16) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Faber-Castell Goldfaber Artists' Graphite 4B Pencil"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product16 <- rbind(product16, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+#View(product16)
+```
+
+product17 - Graphite Pencil - STABILO Exam Grade - Box of 12 - 2B
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product17 <- data.frame()
+
+for (page in 1:5) {
+  link17 <- paste0("https://www.amazon.com.au/Graphite-Pencil-STABILO-Exam-Grade/product-reviews/B0050HNHD0/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session17 <- bow(link17, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session17) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Graphite Pencil - STABILO Exam Grade - Box of 12 - 2B"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product17 <- rbind(product17, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+#View(product17)
+```
+
+product18 - Faber-Castell Grip Plus Set 130997 Mechanical Pencil-Assorted Color
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product18 <- data.frame()
+
+for (page in 1:5) {
+  link18 <- paste0("https://www.amazon.com.au/Faber-Castell-130997-Mechanical-Pencil-Assorted-Color/product-reviews/B000KT79HI/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session18 <- bow(link18, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session18) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Faber-Castell Grip Plus Set 130997 Mechanical Pencil-Assorted Color"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product18 <- rbind(product18, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+#View(product18)
+```
+
+product19 - BIC Matic Original 0.7mm Mechanical Pencils 5 Pack, black
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product19 <- data.frame()
+
+for (page in 1:5) {
+  link19 <- paste0("https://www.amazon.com.au/Matic-Original-0-7mm-Mechanical-Pencils/product-reviews/B004FTDLGM/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session19 <- bow(link19, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session19) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Faber-Castell Grip Plus Set 130997 Mechanical Pencil-Assorted Color"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product19 <- rbind(product19, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+#View(product19)
+```
+
+product20 - BIC Matic Original 0.7mm Mechanical Pencils 5 Pack, black
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product20 <- data.frame()
+
+for (page in 1:5) {
+  link20 <- paste0("https://www.amazon.com.au/Rotring-0-7-800-Mechanical-Pencil/product-reviews/B00JEV9RXC/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session20 <- bow(link20, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session20) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Faber-Castell Grip Plus Set 130997 Mechanical Pencil-Assorted Color"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product20 <- rbind(product20, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  #Sys.sleep(3)
+}
+
+#View(product20)
+```
+
+FUNCTION TO MAKE SCRAPING EASIER (KAY KAPOY MAG ISA ISA)
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+scrapeAmazonReviews <- function(product_name, url_stub, pages) {
+  product_df <- data.frame()
+
+  for (page in pages) {
+    link <- paste0("https://www.amazon.com.au/",url_stub,"/ref=cm_cr_arp_d_paging_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+    session <- bow(link, user_agent = "Educational Purpose")
+
+    scrapeNodes <- function(selector) {
+      scrape(session) %>%
+        html_nodes(selector) %>%
+        html_text(trim = TRUE)
+    }
+
+    scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+    scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+    scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+    scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+    scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+    scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+    product_df <- rbind(product_df, data.frame(
+      prod_name = product_name,
+      title = scrapedTitle,
+      reviewer = scrapedReviewer,
+      review = scrapedReview,
+      date = scrapedDate,
+      ratings = scrapedRating,
+      type_of_purchase = scrapedType
+    ))
+
+    Sys.sleep(3)
+  }
+
+  return(product_df)
+}
+```
+
+Scraping 21-30
+
+```{r}
+    
+product21 <- scrapeAmazonReviews(
+  "Derwent Academy Colouring Pencils, Set of 24 in Tin Box, Blendable Multicolour Artist’s Pencils, Ideal for Colouring, Drawing & Illustration, Premium Hobbyist Quality, 2301938",
+  "Derwent-2301938-Academy-Colouring-Multi-Color/product-reviews/B001XCWP02",
+  3:7
+)
+
+
+product22 <- scrapeAmazonReviews(
+  "Faber-Castell 111260 Colour Pencils (Pack of 60),3.5 x 18.6 x 21 cm; 399.16 Grams",
+  "Faber-Castell-Colour-Pencils-Pack-60/product-reviews/B01FDKQG2W",
+  6:10
+)
+
+
+product23 <- scrapeAmazonReviews(
+  "Derwent Graphic Soft Graphite Drawing Pencils, Ideal For Illustrating & Shading, Set Of 12, Professional Quality, 34215",
+  "Derwent-34215-Graphic-Graphite-Professional/product-reviews/B000J6BAV8",
+  3:7
+)
+
+
+product24 <- scrapeAmazonReviews(
+  "BIC Intensity colored pencils, triangular crayons, colored pencils for painting in 24 colors, in cardboard case, shatterproof lead & without wood (package may vary)",
+  "Intensity-triangular-painting-cardboard-shatterproof/product-reviews/B075N1ZRWW",
+  3:7
+)
+
+
+
+product25 <- scrapeAmazonReviews(
+  "Multi-Talented Pencil - STABILO woody 3 in 1 - Pack of 10 - Assorted Colours with Sharpener",
+  "Multi-talented-STABILO-assorted-colours-sharpener/product-reviews/B000FFR5KI",
+  3:7
+)
+
+
+product26 <- scrapeAmazonReviews(
+  "Royal & Langnickel sketching artist pencils - set of 12 drawing pencils 5H to 6B",
+  "Royal-Langnickel-sketching-artist-pencils/product-reviews/B003B44N8W",
+  3:7
+)
+
+product27 <- scrapeAmazonReviews(
+  "Derwent Academy Watercolour Pencils, Set of 24 in Tin, Multicolour Artist’s Pencils, Ideal for Wet or Dry Colouring, Drawing & Illustration, Premium Hobbyist Quality, 2300226",
+  "Derwent-2301942-Watercolour-Colouring-Multicolor/product-reviews/B001XCWP0W",
+  3:7
+)
+
+
+product28 <- scrapeAmazonReviews(
+  "STAEDTLER 2505HBBK2D Mars Micro Refill Leads for Mechanical Pencils - HB, 0.5mm (Blistercard of 2 x Tubes of 12 Leads)",
+  "STAEDTLER-2505HBBK2D-Refill-Mechanical-Pencils/product-reviews/B0012LCV94",
+  3:7
+)
+
+
+product29 <- scrapeAmazonReviews(
+  "Pentel Ain Stein Mechanical Pencil Lead, 0.5mm HB, 40 Leads (C275-HB)",
+  "Pentel-Stein-Pencil-Hardness-40-Leads/product-reviews/B004NNPWCG",
+  3:7
+)
+
+product30 <- scrapeAmazonReviews(
+  "ARTEZA Colouring Pencils, Professional Set of 72 Colours in a Tin Box, Soft Wax-Based Cores, for Drawing, Sketching & Shading",
+  "ARTEZA-Professional-Wax-Based-Sketching-Beginners/product-reviews/B076DHN68W",
+  6:10
+)
+
+#View(product30)
+```
+
+Scraping 31-40
+
+```{r}
+    
+product31 <- scrapeAmazonReviews(
+  "Staedtler 175 COC12 Hexagonal Colouring Pencils (Pack of 12)",
+  "Staedtler-175-COC12-Hexagonal-Colouring/product-reviews/B07KY2WNTV",
+  3:7
+)
+
+
+
+product32 <- scrapeAmazonReviews(
+  "Pentel Arts Watercolour Pencil Set - Assorted, 24 Count (Pack of 1)",
+  "Pentel-Arts-Watercolour-Pencil-Set/product-reviews/B01G8ACTOK",
+  3:7
+)
+
+
+
+product33 <- scrapeAmazonReviews(
+  "Graphite Pencil - STABILO Othello - Pack of 12 - 2H",
+  "Graphite-Pencil-STABILO-Othello-box/product-reviews/B005TQRYSG",
+  3:7
+)
+
+
+product34 <- scrapeAmazonReviews(
+  "STAEDTLER 100 G12 S Mars Lumograph Graphite Pencils for Drawing & Sketching - Assorted Degrees, 8B-2H (Tin of 12)",
+  "Staedtler-100-G12-Lumograph-Pencils/product-reviews/B001OUS8J0",
+  3:7
+)
+
+
+
+product35 <- scrapeAmazonReviews(
+  "Derwent Charcoal Drawing Pencils, Drawing & Writing, Set Of 6 with Sharpener, Light, Medium, Dark & Tinted Charcoal White, Ideal For Blending & Smudging, Professional Quality, 0700838",
+  "Derwent-Charcoal-Sharpener-Professional-700838/product-reviews/B000PD3M7U",
+  3:7
+)
+
+
+
+product36 <- scrapeAmazonReviews(
+  "Ergonomic Graphite Pencil - STABILO EASYgraph - Left-Handed - Pack of 2 - Petrol - HB",
+  "Handwriting-Pencil-STABILO-EASYgraph-Blister/product-reviews/B003WQFADG",
+  3:7
+)
+
+
+product37 <- scrapeAmazonReviews(
+  "Derwent Drawing Colouring Pencils, Drawing & Writing, Set Of 12, Ideal For Illustrating & Detailing, Professional Quality, 0700671",
+  "Derwent-Coloured-Drawing-Professional-700671/product-reviews/B000J69WUO",
+  3:7
+)
+
+
+product38 <- scrapeAmazonReviews(
+  "Lyra 3 x Ferby Triangular Jumbo Chunky Pencils Pre School Writing Learning Art",
+  "Triangular-Chunky-Pencils-Writing-Learning/product-reviews/B0114KJCYY",
+  2:6
+)
+
+
+product39 <- scrapeAmazonReviews(
+  "Triangular Colouring Pencil - STABILO Trio thick short - Pack of 12 - Assorted Colours",
+  "Colouring-Pencil-STABILO-Assorted-Colours/product-reviews/B000OZKBTG",
+  3:7
+)
+
+
+product40 <- scrapeAmazonReviews(
+  "rOtring 600 Mechanical Pencil | 0.7 mm | Blue All-Metal Body Propelling Pencil | Non-Slip Knurled Grip & Hexagonal Barrel",
+  "rOtring-mechanical-Feinminenstift-Metallic-Hexagonal/product-reviews/B085T859JX",
+  3:7
+)
+
+
+
+```
+
+Scraping 41-50
+
+```{r}
+    
+product41 <- scrapeAmazonReviews(
+  "Derwent34214 Graphic Medium Graphite Drawing Pencils, Set of 12, Professional Quality, Black",
+  "Derwent34214-Graphic-Graphite-Drawing-Professional/product-reviews/B000J69KZQ",
+  3:7
+)
+
+
+product42 <- scrapeAmazonReviews(
+  "Faber-Castell TK-Fine-9760 Mechanical Pencils Wallet of 3 - 0.35, 0.5, 0.7mm, Green",
+  "Faber-Castell-TK-Fine-9713-Mechanical-Pencils-Wallet/product-reviews/B000WF36E0",
+  3:7
+)
+
+
+product43 <- scrapeAmazonReviews(
+  "ARTEZA Professional Drawing Sketch Pencils Set of 12, Medium (6B - 4H), Art Supplies for Drawing Art, Sketching, Shading, Artist Pencils for Beginners & Pro Artists",
+  "ARTEZA-Professional-Drawing-Sketch-Pencils/product-reviews/B077QS34CZ",
+  1:5
+)
+
+product44 <- scrapeAmazonReviews(
+  "STAEDTLER 144 50NC24 Noris Club Erasable Colouring Pencils - Assorted Colours, Pack of 24",
+  "Staedtler-144-Erasable-Colouring-Pencils/product-reviews/B001B2QLC2",
+  3:7
+)
+
+
+product45 <- scrapeAmazonReviews(
+  "Faber-Castell Grip 1345 0.5mm Mechanical Pencil - Green ",
+  "Faber-Castell-Grip-0-5mm-Mechanical-Pencil/product-reviews/B000KT7J96",
+  3:7
+)
+
+
+product46 <- scrapeAmazonReviews(
+  "Helix Oxford Hb Grade Graphite Pencils (Pack of 12) with Plastic Free Packaging Drawing",
+  "Helix-Graphite-Pencils-Plastic-Packaging/product-reviews/B07ZDNXM8W",
+  3:7
+)
+
+
+product47 <- scrapeAmazonReviews(
+  "Bic Matic Original Mechanical Pencils, Perfect for School and Office Use, 0.7 mm Black (HB), Includes 3 HB Lead Refills and Eraser, 12 Count (Pack of 1)",
+  "BIC-Matic-Original-Mechanical-Pencils/product-reviews/B000SHP5P0",
+  3:7
+)
+
+product48 <- scrapeAmazonReviews(
+  "BIC Evolution Graphite Pencils - Pack of 8 - HB Pencils with Eraser - Colourful Stripe Design and Shock-Resistant Lead",
+  "Evolution-Stripes-Eraser-Graphite-Pencils/product-reviews/B01MY2WA44",
+  2:6
+)
+
+product49 <- scrapeAmazonReviews(
+  "BIC Matic ECOlutions Mechanical Pencils - Box of 50 with Assorted Barrel Colours - 0.7 mm HB Friendly Pencils with Resistant Leads, black",
+  "Matic-ECOlutions-0-7mm-Mechanical-Pencils/product-reviews/B0039IVXO2",
+  3:7
+)
+
+product50 <- scrapeAmazonReviews(
+  "BIC Matic Fun, HB Mechanical Pencils and Eraser, Assorted Barrel Colours with Fine ,Yellow,Blue,Green,White,Pink,Point (0.7mm), Pack of 5,Yellow,Blue,Green,White,Pink",
+  "BIC-Matic-0-7mm-Mechanical-Pencils/product-reviews/B009FYMXCU",
+  3:7
+)
+
+
+
+```
+
+
+```{r}
+
+allProds = data.frame();
+
+allProds <- rbind(allProds, product1, product2, product3, product4, product5, product6, product7, product8, product9, product10,
+                product11, product12, product13, product14, product15, product16, product16, product18, product19, product20,
+                product21, product22, product23, product24, product25, product26, product27, product28, product29, product30,
+                product31, product32, product33, product34, product35, product36, product37, product38, product39, product40,
+                product41, product42, product43, product44, product45, product46, product47, product48, product49, product50)
+
+#View(allProds)
+
 ```
