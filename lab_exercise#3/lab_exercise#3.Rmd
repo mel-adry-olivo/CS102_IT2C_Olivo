@@ -132,4 +132,3 @@ write.csv(review_data[,c(2:7)], "review_data.csv")
 dbDisconnect(connection)
 
 ```
-
