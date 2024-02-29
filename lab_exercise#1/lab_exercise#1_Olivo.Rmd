@@ -117,7 +117,7 @@ notebook_products <- rbind(notebook_products, data.frame(category = scrapedCateg
                     no_of_reviews = scrapedReviews))
 
 notebook_products <- notebook_products[1:100,]
-
+#write.csv(notebook_products,"notebook_products.csv")
 
 #View(notebook_products)
 
@@ -238,7 +238,7 @@ pencil_products <- rbind(pencil_products, data.frame(category = scrapedCategory5
                     no_of_reviews = scrapedpencilReviews2))
 
 pencil_products <- pencil_products[1:100,]
-
+write.csv(pencil_products,"pencil_products.csv")
 
 #View(pencil_products)
 ```
@@ -367,6 +367,8 @@ scrapedCategory <- "Notebook"
       Sys.sleep(5)
       
 #View(product1)
+write.csv(product1,"product1.csv")
+
 ```
 product2
 
@@ -481,6 +483,7 @@ scrapedCategory <- "Notebook"
                          ratings = scrapedprodRating3))
       Sys.sleep(5)
 #View(product2)
+write.csv(product2,"product2.csv")
 ```
 product3
 
@@ -596,6 +599,7 @@ scrapedCategory <- "Notebook"
       
       Sys.sleep(5)
 #View(product3)
+write.csv(product3,"product3.csv")
 ```
 product4
 
@@ -712,6 +716,7 @@ scrapedCategory <- "Notebook"
       
       Sys.sleep(5)
 #View(product4)
+write.csv(product4,"product4.csv")      
 ```
 product5
 
@@ -829,6 +834,7 @@ scrapedCategory <- "Notebook"
       Sys.sleep(5)
       
 #View(product5)
+#write.csv(product5,"product5.csv")  
 ```
 product6
 
@@ -943,6 +949,7 @@ scrapedCategory <- "Pencil"
       Sys.sleep(5)
       
 #View(product6)
+      write.csv(product6,"product6.csv")  
 ```
 product7
 
@@ -1058,6 +1065,7 @@ scrapedCategory <- "Pencil"
       Sys.sleep(5)
       
 #View(product7)
+write.csv(product7,"product7.csv")
 ```
 product8
 
@@ -1175,6 +1183,7 @@ scrapedCategory <- "Pencil"
       Sys.sleep(5)
       
 #View(product8)
+write.csv(product8,"product8.csv")
 ```
 product9
 
@@ -1289,6 +1298,7 @@ scrapedCategory <- "Pencil"
       
       Sys.sleep(5)
 #View(product9)
+write.csv(product9,"product9.csv")
 ```
 product10
 
@@ -1405,6 +1415,7 @@ scrapedCategory <- "Pencil"
       
       Sys.sleep(5)
 #View(product10)
+write.csv(product10,"product10.csv")
 ```
 
 ```{r}
