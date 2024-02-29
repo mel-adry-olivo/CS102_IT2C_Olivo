@@ -1209,3 +1209,58 @@ allProds <- rbind(allProds, product1, product2, product3, product4, product5, pr
 #View(allProds)
 
 ```
+
+
+===================================================================
+## INSERT ALL REVIEWS DATA FRAME TO DATABASE
+===================================================================
+
+## USED RMYSQL
+
+```{r}
+library(DBI)
+library(odbc)
+library(RMySQL)
+library(dplyr,dbplyr)
+connection <- dbConnect(RMySQL::MySQL(),
+                        dsn="MariaDB-connection",
+                        Server = "localhost",
+                        dbname = "olivo_2c", 
+                        user = "root", 
+                        password = "") 
+
+```
+
+```{r}
+
+#install.packages("readr")
+library(readr)
+
+allproducts <- read.csv("allproducts.csv")
+tail(allproducts)
+
+```
+
+## Writing Table to Database
+
+```{r}
+
+dbWriteTable(connection, 'lab2Products', allproducts, append = TRUE)
+
+```
+
+### LISTING TABLES AND FIELDS
+
+```{r}
+dbListTables(connection)
+dbListFields(connection,"lab2Products")
+```
+
+### READING DATA FROM TABLE
+
+```{r}
+
+review_data <- dbGetQuery(connection, "SELECT * FROM olivo_2c.lab2Products")
+glimpse(review_data)
+
+```
