@@ -4,6 +4,8 @@ title: "lab_exercise#1_Olivo"
 author: "Olivo, Mel Adry"
 date: "2024-02-07"
 output:
+  html_document:
+    df_print: paged
   pdf_document: default
 ---
 
@@ -1422,4 +1424,67 @@ write.csv(product10,"product10.csv")
 
 all_reviews <- rbind(product1, product2, product3, product4, product5, product6, product7, product8, product9, product10)
 #all_reviews
+```
+
+===================================================================
+## INSERT ALL REVIEWS DATA FRAME TO DATABASE
+===================================================================
+
+## USED RMYSQL
+
+```{r}
+library(DBI)
+library(odbc)
+library(RMySQL)
+library(dplyr,dbplyr)
+connection <- dbConnect(RMySQL::MySQL(),
+                        dsn="MariaDB-connection",
+                        Server = "localhost",
+                        dbname = "olivo_2c", 
+                        user = "root", 
+                        password = "") 
+
+```
+
+```{r}
+
+#install.packages("readr")
+library(readr)
+
+allrevs <- read.csv("all_reviews.csv")
+tail(allrevs)
+
+categs <- read.csv("byCategory.csv")
+tail(categs)
+
+```
+
+## Writing Table to Database
+
+```{r}
+
+dbWriteTable(connection, 'lab1Reviews', allrevs, append = TRUE)
+dbWriteTable(connection, 'lab1Products', categs, append = TRUE)
+
+```
+
+### LISTING TABLES AND FIELDS
+
+```{r}
+dbListTables(connection)
+dbListFields(connection,"lab1Reviews")
+dbListFields(connection,"lab1Products")
+```
+
+### READING DATA FROM TABLE
+
+```{r}
+
+review_data <- dbGetQuery(connection, "SELECT * FROM olivo_2c.lab1Reviews")
+glimpse(review_data)
+
+
+review_data2 <- dbGetQuery(connection, "SELECT * FROM olivo_2c.lab1Products")
+glimpse(review_data)
+
 ```
