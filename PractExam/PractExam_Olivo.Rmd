@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 A. Load the built-in warpbreaks dataset.
 
-```{r}
+```{r A}
 
 data("warpbreaks")
 
@@ -22,7 +22,7 @@ data("warpbreaks")
 1. Find out, in a single command, which columns of warpbreaks are either numeric or integer. 
 What are the data types of each column?
 
-```{r}
+```{r A1}
 
 str(warpbreaks)
 
@@ -33,7 +33,7 @@ str(warpbreaks)
 
 2. How many observations does it have?
 
-```{r}
+```{r A2}
 
 (numOfObservations <- nrow(warpbreaks))
 
@@ -44,7 +44,7 @@ str(warpbreaks)
 3. Is numeric a natural data type for the columns which are stored as such? 
 Convert to integer when necessary.
 
-```{r}
+```{r A3}
 
 is.integer(warpbreaks$breaks) # returns TRUE because breaks column is already an integer
 
@@ -62,7 +62,7 @@ user-level class. Derive from the following code and error message what the
 underlying type. Explain what is the error all about. Do not just copy the error
 message that was displayed.
 
-```{r}
+```{r A4}
 
 ## A Factor variable are stored internally as integers wihch is the underlying type. 
 ## Doing operations on such a factor would lead to an error mentioning "integer" 
@@ -81,7 +81,7 @@ B. Load the exampleFile.txt
 
 1. Read the complete file using readLines.
 
-```{r}
+```{r B1}
 
 (exampleFile <- readLines("exampleFile.txt"))
 
@@ -90,7 +90,7 @@ B. Load the exampleFile.txt
 2. Separate the vector of lines into a vector containing comments and a vector
 containing the data. Hint: use grepl.
 
-```{r}
+```{r B2}
 
 ## separating lines with "//" to and put to a vector
 (comments <- exampleFile[grepl("//", exampleFile)])
@@ -103,7 +103,7 @@ containing the data. Hint: use grepl.
 3. Extract the date from the first comment line and display on the screen “It was created
 data.”
 
-```{r}
+```{r B3}
 
 ## Using gsub to replace from "Created : " and everything behind it to blank ""
 
@@ -119,7 +119,7 @@ paste0("It was created ", date)
 a. Split the character vectors in the vector containing data lines by semicolon (;)
 using strsplit.
 
-```{r}
+```{r B4a}
 
 (splitLines <- strsplit(data, ";"))
 
@@ -128,7 +128,7 @@ using strsplit.
 b. Find the maximum number of fields retrieved by split. 
 Append rows that are shorter with NA's.
 
-```{r}
+```{r B4b}
 
 ## Get lengths of each rows
 (lengthVectors <- sapply(splitLines, length))
@@ -146,7 +146,7 @@ Append rows that are shorter with NA's.
 
 c. Use unlist and matrix to transform the data to row-column format.
 
-```{r}
+```{r B4c}
 
 (unlistedLines <- unlist(splitLines))
 
@@ -157,7 +157,7 @@ c. Use unlist and matrix to transform the data to row-column format.
 d. From comment lines 2-4, extract the names of the fields.
 Set these as colnames for the matrix you just created.
 
-```{r}
+```{r B4d}
 
 ## Using gsub to replace everything from the start up to ": " to blank ""
 (fields <- gsub(".*: ", "", comments[2:4]))
