@@ -1,0 +1,175 @@
+---
+title: "practical_olivo"
+author: "Olivo, Mel Adry"
+date: "2024-03-06"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+A. Load the built-in warpbreaks dataset.
+
+```{r}
+
+data("warpbreaks")
+
+#View(warpbreaks)
+
+```
+
+1. Find out, in a single command, which columns of warpbreaks are either numeric or integer. 
+What are the data types of each column?
+
+```{r}
+
+str(warpbreaks)
+
+## The breaks column is a numeric data type
+## The wool and tension column are factored characters
+
+```
+
+2. How many observations does it have?
+
+```{r}
+
+(numOfObservations <- nrow(warpbreaks))
+
+## There are 54 observations
+
+```
+
+3. Is numeric a natural data type for the columns which are stored as such? 
+Convert to integer when necessary.
+
+```{r}
+
+is.integer(warpbreaks$breaks) # returns TRUE because breaks column is already an integer
+
+warpbreaks$wool <- as.integer(warpbreaks$wool) 
+warpbreaks$tension <- as.integer(warpbreaks$tension)
+
+## wool and tension column is converted to integer
+
+warpbreaks
+
+```
+
+4. Error messages in R sometimes report the underlying type of an object rather than the
+user-level class. Derive from the following code and error message what the
+underlying type. Explain what is the error all about. Do not just copy the error
+message that was displayed.
+
+```{r}
+
+## A Factor variable are stored internally as integers wihch is the underlying type. 
+## Doing operations on such a factor would lead to an error mentioning "integer" 
+## despite the user treating it as a character.
+
+
+## R displays the underlying type like integer or numeric instead 
+## of the user-level class like factors or characters.
+
+
+## If necessary, convert data to the appropriate type using functions like as.integer().
+```
+
+
+B. Load the exampleFile.txt
+
+1. Read the complete file using readLines.
+
+```{r}
+
+(exampleFile <- readLines("exampleFile.txt"))
+
+```
+
+2. Separate the vector of lines into a vector containing comments and a vector
+containing the data. Hint: use grepl.
+
+```{r}
+
+## separating lines with "//" to and put to a vector
+(comments <- exampleFile[grepl("//", exampleFile)])
+
+## separating lines WITHOUT "//" and put to a vector
+(data <- exampleFile[!grepl("//", exampleFile)])
+
+```
+
+3. Extract the date from the first comment line and display on the screen “It was created
+data.”
+
+```{r}
+
+## Using gsub to replace from "Created : " and everything behind it to blank ""
+
+(date <- gsub(".*Created : ", "", comments[1]))
+
+paste0("It was created ", date)
+
+
+```
+
+4. Read the data into a matrix as follows.
+
+a. Split the character vectors in the vector containing data lines by semicolon (;)
+using strsplit.
+
+```{r}
+
+(splitLines <- strsplit(data, ";"))
+
+```
+
+b. Find the maximum number of fields retrieved by split. 
+Append rows that are shorter with NA's.
+
+```{r}
+
+## Get lengths of each rows
+(lengthVectors <- sapply(splitLines, length))
+
+
+## Find the max length from each vectors
+(maxFields <- max(lengthVectors))
+
+
+## Applying a function to each rows in splitLines list by using lapply()
+## Combine NA to shorter rows using c()
+(splitLines <- lapply(splitLines, function(row) c(row, rep(NA, maxFields - length(row)))))
+
+```
+
+c. Use unlist and matrix to transform the data to row-column format.
+
+```{r}
+
+(unlistedLines <- unlist(splitLines))
+
+## byrow = TRUE so matrix would be filled horizontally or by rows and not by columns.
+(dataMatrix <- matrix(unlistedLines, nrow = length(data), byrow = TRUE))
+```
+
+d. From comment lines 2-4, extract the names of the fields.
+Set these as colnames for the matrix you just created.
+
+```{r}
+
+## Using gsub to replace everything from the start up to ": " to blank ""
+(fields <- gsub(".*: ", "", comments[2:4]))
+
+## Changing colnames 
+(colnames(dataMatrix) <- fields)
+
+
+## The final matrix
+dataMatrix
+
+```
+
+^_^ ^_^ THANK YOU ^_^ ^_^
+
